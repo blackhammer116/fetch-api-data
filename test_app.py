@@ -11,7 +11,7 @@ def client():
 
 def test_get_news(client):
     response = client.get("/news")
-    print("Response Json: ", response.get_json())
+    print("Response Json:", response.get_json())
     assert response.status_code == 200
     data = response.get_json()
     assert "message" in data
