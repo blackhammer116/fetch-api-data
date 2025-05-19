@@ -58,7 +58,7 @@ jobs:
 
     - name: Wait for MySQL to be ready
       run: |
-        sleep 15  # Give MySQL time to start
+        sleep 15
 
     - name: Initialize DB Schema
       run: |
