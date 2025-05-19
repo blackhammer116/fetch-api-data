@@ -63,26 +63,26 @@ jobs:
     - name: Initialize DB Schema
       run: |
         python -c "
-import mysql.connector, os
-conn = mysql.connector.connect(
-    host=os.getenv('DB_HOST'),
-    user=os.getenv('DB_USER'),
-    password=os.getenv('DB_PASSWORD'),
-    database=os.getenv('DB_NAME')
-)
-cursor = conn.cursor()
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS articles (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    title TEXT,
-    description TEXT,
-    url TEXT,
-    published_at DATETIME
-)
-''')
-conn.commit()
-conn.close()
-"
+        import mysql.connector, os
+        conn = mysql.connector.connect(
+            host=os.getenv('DB_HOST'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            database=os.getenv('DB_NAME')
+        )
+        cursor = conn.cursor()
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS articles (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            title TEXT,
+            description TEXT,
+            url TEXT,
+            published_at DATETIME
+        )
+        ''')
+        conn.commit()
+        conn.close()
+        "
 
     - name: Run tests
       run: pytest
