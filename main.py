@@ -35,8 +35,8 @@ def news():
     if not NEWS_API_KEY:
         return jsonify({"error": "Missing API key"}), 400
 
-    country = request.args.get('country')
-    category = request.args.get('category')
+    country = request.args.get("country")
+    category = request.args.get("category")
     # if not country or not category:
     #     country = request.args.get("country", "us")
     #     category = request.args.get("category", "general")
@@ -93,4 +93,4 @@ def news():
 
 
 if __name__ == "__main__":
-    app.run('0.0.0.0',debug=True)
+    app.run("0.0.0.0", debug=True)
