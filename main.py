@@ -37,9 +37,9 @@ def news():
 
     country = request.args.get("country")
     category = request.args.get("category")
-    # if not country or not category:
-    #     country = request.args.get("country", "us")
-    #     category = request.args.get("category", "general")
+    if not country or not category:
+        country = request.args.get("country", "us")
+        category = request.args.get("category", "general")
 
     params = {"apikey": NEWS_API_KEY, "country": country, "category": category}
 
@@ -83,9 +83,7 @@ def news():
         conn.close()
 
         # return jsonify({"message": f"{len(articles)} articles saved."})
-        return jsonify({'article': article.get("title"),
-                        'description': article.get("description"),
-                        'published_at': article.get("publishedAt"),
+        return jsonify({'articls': articles,
                         "message": f"{len(articles)} articles saved."})
 
     except requests.exceptions.RequestException as e:
