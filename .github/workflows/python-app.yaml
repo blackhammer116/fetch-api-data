@@ -89,8 +89,13 @@ jobs:
     - name: Run tests
       run: pytest
 
-    - name: Deploy to GithubPages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        folder: ./
+    # - name: Deploy to GithubPages
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     folder: ./
+    - name: Deploy to Render
+      run: |
+        curl -X POST "$RENDER_DEPLOY_HOOK_URL"
+      env:
+        RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
