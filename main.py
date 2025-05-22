@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import os
 from dotenv import load_dotenv
 import requests
@@ -26,7 +26,7 @@ def get_db_connection():
 
 @app.route("/")
 def index():
-    return "Hello"
+    return render_template('frontend.html')
 
 
 @app.route("/news", methods=["GET"])
