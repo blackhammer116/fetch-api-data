@@ -26,7 +26,7 @@ def get_db_connection():
 
 @app.route("/")
 def index():
-    return render_template('frontend.html')
+    return render_template('index.html')
 
 
 @app.route("/news", methods=["GET"])
