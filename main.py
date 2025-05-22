@@ -82,7 +82,8 @@ def news():
         cursor.close()
         conn.close()
 
-        return jsonify({"message": f"{len(articles)} articles saved."})
+        # return jsonify({"message": f"{len(articles)} articles saved."})
+        return jsonify({'article': article.get("title"), 'description': article.get("description"), 'published_at': article.get("publishedAt"), "message": f"{len(articles)} articles saved."})
 
     except requests.exceptions.RequestException as e:
         return jsonify({"error": f"Failed to send request, {str(e)}"}), 500
