@@ -4,11 +4,13 @@ from dotenv import load_dotenv
 import requests
 from datetime import datetime
 import mysql.connector
+from flask_cors import CORS
 
 
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 news_url = "https://newsapi.org/v2/top-headlines"
 
 
@@ -33,8 +35,11 @@ def news():
     if not NEWS_API_KEY:
         return jsonify({"error": "Missing API key"}), 400
 
-    country = request.args.get("country", "us")
-    category = request.args.get("category", "general")
+    country = request.args.get('country')
+    category = request.args.get('category')
+    # if not country or not category:
+    #     country = request.args.get("country", "us")
+    #     category = request.args.get("category", "general")
 
     params = {"apikey": NEWS_API_KEY, "country": country, "category": category}
 
@@ -88,4 +93,4 @@ def news():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run('0.0.0.0',debug=True)
