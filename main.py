@@ -91,7 +91,7 @@ def news():
     except mysql.connector.Error as e:
         return jsonify({"error": f"Database error: {str(e)}"}), 500
     except Exception as e:
-        return jsonify({"error": f"Unknown Error has occured, {str(e)}"}), 500
+    return jsonify({"error": f"Unknown Error has occured, {str(e)}"}), 500
 
 
 if __name__ == "__main__":
